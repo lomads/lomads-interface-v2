@@ -15,6 +15,12 @@ export const store = configureStore();
 export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
+declare global {
+    interface Window {
+      Trello: any; // 👈️ turn off type checking
+    }
+  }
+
 const App = () => {
 	return (
         <ThemeProvider theme={theme}>
