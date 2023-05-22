@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import frameicon from "../../assets/svg/frame.svg";
 import { useNavigate } from "react-router-dom";
 import { loadDao } from 'state/dashboard/actions';
-import SideBar from "../../pages/NewPages/DashBoard/SideBar";
+import SideBar from "../../pages/SideBar";
 import { useAppDispatch } from "state/hooks";
 import { useWeb3React } from "@web3-react/core";
 import { Box, Container, Grid } from "@mui/material"

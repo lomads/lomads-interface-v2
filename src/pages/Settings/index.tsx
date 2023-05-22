@@ -15,13 +15,13 @@ import Safe from "../../assets/images/settings-page/3-safe.svg";
 import PassTokens from "../../assets/images/settings-page/4-pass-tokens.svg";
 import XpPoints from "../../assets/images/settings-page/5-xp-points.svg";
 import Terminology from "../../assets/images/settings-page/6-terminology.svg";
-import OrganisationDetailsModal from "muiModals/OrganisationDetailsModal";
-import SafeModal from "muiModals/SafeModal";
-import XpPointsModal from "muiModals/XpPointsModal";
-import PassTokenModal from "muiModals/PassTokenModal";
-import TerminologyModal from "muiModals/TerminologyModal";
-import RolesAndPermissionModal from "muiModals/RolesAndPermissionModal";
-import IntegrationsModal from "muiModals/IntegrationsModal";
+import OrganisationDetailsModal from "modals/OrganisationDetailsModal";
+import SafeModal from "modals/SafeModal";
+import XpPointsModal from "modals/XpPointsModal";
+import PassTokenModal from "modals/PassTokenModal";
+import TerminologyModal from "modals/TerminologyModal";
+import RolesAndPermissionModal from "modals/RolesAndPermissionModal";
+import IntegrationsModal from "modals/IntegrationsModal";
 import { useAppDispatch, useAppSelector } from "state/hooks";
 import { getDao } from "state/dashboard/actions";
 import eventEmitter from "utils/eventEmmiter";
@@ -156,7 +156,7 @@ const useStyles = makeStyles((theme: any) => ({
 	}
 }));
 
-const Settings = () => {
+export default () => {
 	const navigate = useNavigate();
 	const classes = useStyles()
 	const { daoURL, openState } = useParams();
@@ -515,5 +515,3 @@ const Settings = () => {
 		</>
 	);
 };
-
-export default Settings;

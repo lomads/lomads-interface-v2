@@ -4,12 +4,12 @@ import { get as _get } from 'lodash'
 import SBT_SVG from 'assets/svg/sbt.svg'
 import EDIT_SVG from 'assets/svg/edit.svg'
 import { makeStyles } from '@mui/styles';
-import TextInput from 'muiComponents/TextInput';
-import Switch from "muiComponents/Switch";
+import TextInput from 'components/TextInput';
+import Switch from "components/Switch";
 import Button from "components/Button";
 import Dropzone from "muiComponents/Dropzone";
 import React, { useEffect, useState } from "react";
-import IconButton from "muiComponents/IconButton";
+import IconButton from "components/IconButton";
 import useContractDeployer, { SBTParams } from "hooks/useContractDeployer"
 import { useWeb3React } from "@web3-react/core"
 import { SUPPORTED_CHAIN_IDS, SupportedChainId } from "constants/chains"
