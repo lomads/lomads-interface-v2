@@ -81,11 +81,6 @@ export default () => {
           <Box className={classes.messageSubtext}>Please contact the admin through email or other social channels</Box>
         </Box>
       </Box>
-      <SideBar
-        name={""}
-        showSideBar={showSideBar}
-        showNavBar={showNavBar}
-      />
     </Grid>
 		</Container>
   );

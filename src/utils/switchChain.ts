@@ -10,7 +10,6 @@ import {
 import { CHAIN_INFO } from 'constants/chainInfo'
 import { SUPPORTED_CHAIN_IDS, SupportedChainId } from 'constants/chains'
 import { INFURA_NETWORK_URLS } from 'constants/infura'
-import { updateSelectedWallet } from 'state/user/reducer'
 
 
 export function getRpcUrls(chainId: SupportedChainId): [string] {

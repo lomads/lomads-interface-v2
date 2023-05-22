@@ -7,16 +7,16 @@ import { makeStyles } from '@mui/styles';
 import TextInput from 'components/TextInput';
 import Switch from "components/Switch";
 import Button from "components/Button";
-import Dropzone from "muiComponents/Dropzone";
+import Dropzone from "components/Dropzone";
 import React, { useEffect, useState } from "react";
 import IconButton from "components/IconButton";
 import useContractDeployer, { SBTParams } from "hooks/useContractDeployer"
 import { useWeb3React } from "@web3-react/core"
 import { SUPPORTED_CHAIN_IDS, SupportedChainId } from "constants/chains"
 import axiosHttp from 'api'
-import CurrencyInput from "muiComponents/CurrencyInput"
+import CurrencyInput from "components/CurrencyInput"
 import { useNavigate, useParams } from "react-router-dom"
-import XlsxUpload from "muiComponents/XlsxUpload"
+import XlsxUpload from "components/XlsxUpload"
 import { USDC } from 'constants/tokens';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -24,7 +24,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Select from "muiComponents/Select";
+import Select from "components/Select";
 import { beautifyHexToken } from "utils"
 import { useAppDispatch, useAppSelector } from "state/hooks"
 import { getDao, loadDao } from "state/dashboard/actions"

@@ -42,7 +42,7 @@ import { makeStyles } from '@mui/styles';
 import MuiSelect from 'components/Select'
 import SwitchChain from 'components/SwitchChain';
 import axios from "axios";
-import Avatar from "muiComponents/Avatar";
+import Avatar from "components/Avatar";
 
 const useStyles = makeStyles((theme: any) => ({
 	root: {

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { get as _get, find as _find } from "lodash";
 import settingIcon from "../../assets/svg/settingsXL.svg";
-import { CgClose } from "react-icons/cg";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axiosHttp from '../../api';
 import Footer from "components/Footer";
-import { ChevronRight } from "react-feather";
-import IntegrationGrey from "../../assets/svg/IntegrationGrey.svg";
+import IntegrationGrey from "../../../assets/svg/IntegrationGrey.svg";
 
 // ASSETS
 import OrganistionDetails from "../../assets/images/settings-page/1-ogranisation-details.svg";

@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import LandingLayout from 'layouts/LandingLayout';
+import DashboardLayout from 'layouts/DashboardLayout';
+
 import LoginPage from 'pages/Login';
 import DashboardPage from 'pages/Dashboard';
 import createDaoOrg from "pages/CreateDaoOrg"
@@ -16,6 +18,13 @@ export default [
 		layout: LandingLayout,
 		private: false,
 		component: LoginPage
+	},
+	{
+		path: '/:daoURL/project',
+		exact: true,
+		layout: LandingLayout,
+		private: true,
+		component: DashboardPage
 	},
 	{
 		path: '/',
@@ -50,7 +59,10 @@ export default [
     },
     {
         path: '/noaccess',
-        component: DAONoAccess
+        component: DAONoAccess,
+		exact: true,
+		layout: LandingLayout,
+		private: true
     },
 	{
         path: '/:daoURL/settings',
@@ -59,5 +71,12 @@ export default [
     {
         path: '/:daoURL/settings/:openState',
         component: Settings
-    }
+    },
+	{
+		path: '/:daoURL',
+		exact: true,
+		layout: DashboardLayout,
+		private: true,
+		component: DashboardPage
+	}
 ];

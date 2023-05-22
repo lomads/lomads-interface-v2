@@ -22,7 +22,7 @@ import Integrationdiscord from "assets/svg/Integrationdiscord.svg"
 import checkmark from "assets/svg/completeCheckmark.svg";
 import downHandler from "assets/svg/downHandler.svg";
 import rightArrow from "assets/svg/rightArrow.svg"
-import palette from 'muiTheme/palette';
+import palette from 'theme/palette';
 import { useAppSelector, useAppDispatch } from "state/hooks";
 import { LeapFrog } from "@uiball/loaders";
 import { makeStyles } from '@mui/styles';

@@ -6,12 +6,12 @@ import {
     Drawer, Box, Typography, Paper
 } from '@mui/material';
 import IconButton from 'components/IconButton';
-import Button from 'muiComponents/Button';
+import Button from 'components/Button';
 import Switch from "components/Switch";
-import CurrencyInput from "muiComponents/CurrencyInput"
+import CurrencyInput from "components/CurrencyInput"
 import CloseSVG from 'assets/svg/close-new.svg'
 import RP from "assets/images/drawer-icons/RP.svg";
-import palette from 'muiTheme/palette';
+import palette from 'theme/palette';
 import { makeStyles } from '@mui/styles';
 import PT from "assets/images/drawer-icons/PT.svg";
 
