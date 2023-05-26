@@ -22,8 +22,7 @@ const App = () => {
             <Provider store={store}>
                 <PersistGate persistor={persistor}>
                     <Web3AuthProvider>
-                        <Router basename={''}>
-                            
+                        <Router basename={''}>  
                                 <Routes>
                                     {routes.map((route, index) => {
                                         return (

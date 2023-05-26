@@ -2,7 +2,6 @@ import React, { Fragment, useMemo, useState } from "react";
 import { Box, Grid, Typography, Drawer } from "@mui/material";
 import { makeStyles } from '@mui/styles';
 import { ChevronRight } from "@mui/icons-material";
-import CloseSVG from 'assets/svg/close-new.svg'
 import OrganistionDetails from "assets/images/settings-page/1-ogranisation-details.svg";
 import RolesPermissions from "assets/images/settings-page/2-roles-permissions.svg";
 import Safe from "assets/images/settings-page/3-safe.svg";
@@ -15,8 +14,8 @@ import SafeModal from './Modals/Safe'
 import OrganisationModal from './Modals/OrganisationDetails'
 import TagsAndTerminologyModal from './Modals/TagsAndTerminology'
 import RolesAndPermissionModal from './Modals/RolesAndPermissions'
-import IconButton from "components/IconButton";
 import { useDAO } from "context/dao";
+import SbtModal from "./Modals/SBT";
 
 const useStyles = makeStyles((theme: any) => ({
 	item: {
@@ -67,7 +66,6 @@ export default () => {
 	const [activeModal, setActiveModal] = useState<string | null>(null);
 
 	const Modal = useMemo(() => {
-		console.log(activeModal, '.....active...')
 		if (activeModal === SafeModal.name)
 			return SafeModal
 
@@ -79,6 +77,9 @@ export default () => {
 
 		if (activeModal === TagsAndTerminologyModal.name)
 			return TagsAndTerminologyModal
+
+		if (activeModal === SbtModal.name)
+			return SbtModal
 
 		return Fragment
 	}, [activeModal])
@@ -107,6 +108,9 @@ export default () => {
 				<Grid item sm={6} md={4} xs={1}>
 					<Content onClick={() => { }} icon={IntegrationGrey} title="Integrations" />
 				</Grid>
+				<Grid item sm={6} md={4} xs={1}>
+					<Content onClick={() => { setActiveModal(SbtModal.name) }} icon={IntegrationGrey} title="SBT" />
+				</Grid>
 			</Grid>
 			<Drawer
 				PaperProps={{ style: { borderTopLeftRadius: 20, borderBottomLeftRadius: 20 } }}
@@ -114,7 +118,7 @@ export default () => {
 				anchor={'right'}
 				open={activeModal !== null}
 				onClose={() => setActiveModal(null)}>
-				<Box sx={{ width: '575px', flex: 1, padding: '32px 72px 32px 72px', borderRadius: '20px 0px 0px 20px' }}>
+				<Box sx={{ minWidth: '575px', flex: 1, padding: '32px 72px 32px 72px', borderRadius: '20px 0px 0px 20px' }}>
 					<Modal onClose={() => setActiveModal(null)} />
 				</Box>
 			</Drawer>

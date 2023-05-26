@@ -105,7 +105,7 @@ const RolesAndPermissionModal = ({ onClose }: { onClose: any }) => {
     };
 
     return (
-            <Box sx={{ flex: 1, borderRadius: '20px 0px 0px 20px' }}>
+            <Box sx={{ width: 960, flex: 1, paddingBottom: '80px', paddingLeft: '40px', borderRadius: '20px 0px 0px 20px' }}>
                 <IconButton sx={{ position: 'fixed', right: 32, top: 32 }} onClick={() => onClose()}>
                     <img src={CloseSVG} />
                 </IconButton>
