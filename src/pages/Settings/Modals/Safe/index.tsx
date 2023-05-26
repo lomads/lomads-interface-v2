@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme: any) => ({
   }));
 
 
-export default ({ onClose }: { onClose: any }) => {
+const SafeModal = ({ onClose }: { onClose: any }) => {
     const classes = useStyles();
     const navigate = useNavigate();
     const { DAO } = useDAO();
@@ -203,3 +203,5 @@ export default ({ onClose }: { onClose: any }) => {
         </Box>
     )
 }
+
+export default SafeModal;
