@@ -74,11 +74,11 @@ export default ({ transaction, onRecurringEdit }: any) => {
                     transaction.ends && transaction.ends.key === 'ON' ?
                     `from ${ moment(transaction.startDate).local().format('MM/DD/YYYY') } to ${ moment(transaction.ends.value).local().format('MM/DD/YYYY') }` : 
                     transaction.ends && transaction.ends.key === 'AFTER' && !transaction.active ?
-                    `${transaction.ends.value} occurances` :
+                    `${transaction.ends.value} occurrences` :
                     transaction.ends && transaction.ends.key === 'AFTER' && transaction.active && transaction.queue.filter((t:any) => t.moduleTxnHash).length > 0 ?
-                    `${transaction.queue.filter((t:any) => t.moduleTxnHash).length}/${transaction.ends.value} occurances completed` :
+                    `${transaction.queue.filter((t:any) => t.moduleTxnHash).length}/${transaction.ends.value} occurrences completed` :
                     transaction.ends && transaction.ends.key === 'AFTER' && transaction.active && transaction.queue.filter((t:any) => t.moduleTxnHash).length == 0 ?
-                    `${transaction.ends.value} occurances` :
+                    `${transaction.ends.value} occurrences` :
                     `from ${ moment(transaction.startDate).local().format('MM/DD/YYYY') }`
                 }</Typography>
             </div>

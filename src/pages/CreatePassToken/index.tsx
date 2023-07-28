@@ -549,7 +549,7 @@ export default () => {
                                 <Box mt={2}>
                                     <Select
                                         selected={stateX?.selectedChainId}
-                                        options={ SUPPORTED_CHAIN_IDS.filter(i => i !== SupportedChainId.MAINNET).map((item : any) => ({ label: CHAIN_INFO[item].label, value: item }))}
+                                        options={ SUPPORTED_CHAIN_IDS.map((item : any) => ({ label: CHAIN_INFO[item].label, value: item }))}
                                         setSelectedValue={(value) => {
                                             setStateX((prev: any) => { return {
                                                 ...prev, 

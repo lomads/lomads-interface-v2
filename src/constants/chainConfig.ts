@@ -39,6 +39,15 @@ export const CHAIN_CONFIG = {
     ticker: "MATIC",
     tickerName: "Matic",
   } as CustomChainConfig,
+  celo: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    rpcTarget: 'https://forno.celo.org',
+    blockExplorer: "https://celoscan.io/",
+    chainId: '0xA4EC',
+    displayName: "Celo Mainnet",
+    ticker: "CELO",
+    tickerName: "Celo",
+  } as CustomChainConfig,
 } as const;
 
 export type CHAIN_CONFIG_TYPE = keyof typeof CHAIN_CONFIG;

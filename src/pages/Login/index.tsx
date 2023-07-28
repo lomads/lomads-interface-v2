@@ -124,11 +124,11 @@ export default () => {
         console.log("TOKEN , USER, ACC", token, user, account)
         if (token && user && account) {
             if (from){
-                const manDisc = localStorage.getItem("MANUAL_DISCONNECT")
+                const manDisc = sessionStorage.getItem("MANUAL_DISCONNECT")
                 if(!manDisc)
                     navigate(from)
                 else {
-                    localStorage.removeItem("MANUAL_DISCONNECT")
+                    sessionStorage.removeItem("MANUAL_DISCONNECT")
                     navigate('/')
                 }
             }

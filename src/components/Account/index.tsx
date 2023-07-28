@@ -136,7 +136,7 @@ export default ({ children, options = true, ...props }: any) => {
 		dispatch(setUserAction(null))
 		dispatch(logoutAction())
 		try { await logout() } catch (e) { console.log(e) }
-		await localStorage.setItem("MANUAL_DISCONNECT", "true")
+		await sessionStorage.setItem("MANUAL_DISCONNECT", "true")
 		window.location.reload()
 	};
 
