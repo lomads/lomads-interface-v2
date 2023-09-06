@@ -1,9 +1,12 @@
 import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
-import arbitrumLogoUrl from 'assets/svg/arbitrum_logo.svg'
-import optimismLogoUrl from 'assets/svg/optimistic_ethereum.svg'
 import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
+import celoLogo from 'assets/svg/celo.svg'
+import baseLogo from 'assets/svg/base.svg'
+import optLogo from 'assets/svg/Opt.svg'
+import arbLogo from 'assets/svg/arb.svg'
+import avaxLogo from 'assets/svg/avax.svg'
 
-import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
+import { SupportedChainId } from './chains'
 
 export enum NetworkType {
   L1,
@@ -37,11 +40,6 @@ export interface L2ChainInfo extends BaseChainInfo {
   readonly statusPage?: string
   readonly defaultListUrl: string
 }
-
-export type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainInfo } & {
-  readonly [chainId in SupportedL2ChainId]: L2ChainInfo
-} &
-  { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
 
 export const CHAIN_INFO: any = {
   [SupportedChainId.MAINNET]: {
@@ -84,5 +82,75 @@ export const CHAIN_INFO: any = {
     chainId: '0x89',
     network: 'cyan',
     chainName: 'polygon'
+  },
+  [SupportedChainId.CELO]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: `10m`,
+    docs: 'https://celo.io/',
+    explorer: 'https://celoscan.io/',
+    opensea: 'https://opensea.io/assets/celo/',
+    infoLink: 'https://info.uniswap.org/#/celo/',
+    label: 'Celo',
+    logoUrl: celoLogo,
+    nativeCurrency: { name: 'Celo Native Asset', symbol: 'CELO', decimals: 18 },
+    chainId: '0xA4EC',
+    network: 'cyan',
+    chainName: 'celo'
+  },
+  [SupportedChainId.BASE]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: `10m`,
+    docs: '	https://mainnet.base.org',
+    explorer: '	https://mainnet.base.org',
+    opensea: 'https://opensea.io/assets/base/',
+    infoLink: 'https://info.uniswap.org/#/base/',
+    label: 'Base',
+    logoUrl: baseLogo,
+    nativeCurrency: { name: 'Base Native Asset', symbol: 'BASE', decimals: 18 },
+    chainId: '0x2105',
+    network: 'cyan',
+    chainName: 'base'
+  },
+  [SupportedChainId.OPTIMISM]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: `10m`,
+    docs: '	https://mainnet.base.org',
+    explorer: '	https://mainnet.base.org',
+    opensea: 'https://opensea.io/assets/optimism/',
+    infoLink: 'https://info.uniswap.org/#/optimism/',
+    label: 'Optimism',
+    logoUrl: optLogo,
+    nativeCurrency: { name: 'Optimism Native Asset', symbol: 'ETH', decimals: 18 },
+    chainId: '0xa',
+    network: 'cyan',
+    chainName: 'opt'
+  },
+  [SupportedChainId.ARBITRUM]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: `10m`,
+    docs: '	https://mainnet.base.org',
+    explorer: '	https://mainnet.base.org',
+    opensea: 'https://opensea.io/assets/arbitrum/',
+    infoLink: 'https://info.uniswap.org/#/arbitrum/',
+    label: 'Arbitrum',
+    logoUrl: arbLogo,
+    nativeCurrency: { name: 'Arbitrum Native Asset', symbol: 'ETH', decimals: 18 },
+    chainId: '0xA4B1',
+    network: 'cyan',
+    chainName: 'arb'
+  },
+  [SupportedChainId.AVALANCHE]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: `10m`,
+    docs: '	https://mainnet.base.org',
+    explorer: '	https://mainnet.base.org',
+    opensea: 'https://opensea.io/assets/avalanche/',
+    infoLink: 'https://info.uniswap.org/#/avalanche/',
+    label: 'Avax',
+    logoUrl: avaxLogo,
+    nativeCurrency: { name: 'Avalanche Native Asset', symbol: 'AVAX', decimals: 18 },
+    chainId: '0xA86A',
+    network: 'cyan',
+    chainName: 'avax'
   }
 }
