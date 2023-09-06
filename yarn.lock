@@ -2692,7 +2692,7 @@
   "resolved" "https://registry.npmjs.org/@chakra-ui/visually-hidden/-/visually-hidden-2.0.15.tgz"
   "version" "2.0.15"
 
-"@coinbase/wallet-sdk@^3.x":
+"@coinbase/wallet-sdk@^3.7.1", "@coinbase/wallet-sdk@^3.x":
   "integrity" "sha512-LjyoDCB+7p0waQXfK+fUgcAs3Ezk6S6e+LYaoFjpJ6c9VTop3NyZF40Pi7df4z7QJohCwzuIDjz0Rhtig6Y7Pg=="
   "resolved" "https://registry.npmjs.org/@coinbase/wallet-sdk/-/wallet-sdk-3.7.1.tgz"
   "version" "3.7.1"
