@@ -2,9 +2,9 @@
 <g clip-path="url(#clip0_2133_3698)">
 <rect x="0.0664062" width="37" height="37" fill="#1B2B41" fill-opacity="0.2"/>
 <path d="M6.01245 14.0544L14.1206 5.94629L6.01245 14.0544Z" fill="white"/>
-<path d="M6.01245 14.0544L14.1206 5.94629" stroke="white" stroke-linecap="round"/>
+<path d="M6.01245 14.0544L14.1206 5.94629" stroke="white" strokeLinecap="round"/>
 <path d="M14.1206 14.0544L6.01245 5.94629L14.1206 14.0544Z" fill="white"/>
-<path d="M14.1206 14.0544L6.01245 5.94629" stroke="white" stroke-linecap="round"/>
+<path d="M14.1206 14.0544L6.01245 5.94629" stroke="white" strokeLinecap="round"/>
 </g>
 <defs>
 <clipPath id="clip0_2133_3698">

@@ -397,8 +397,8 @@ export default () => {
                   <path
                     d='M1 1H209'
                     stroke='#C94B32'
-                    stroke-width='2'
-                    stroke-linecap='round'
+                    strokeWidth='2'
+                    strokeLinecap='round'
                   />
                 </svg>
               </Box>

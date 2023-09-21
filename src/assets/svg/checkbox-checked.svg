@@ -4,7 +4,7 @@
 </g>
 <rect x="3.74988" y="3" width="24" height="24" rx="8" fill="#C94B32"/>
 <g clip-path="url(#clip0_3561_18924)">
-<path d="M9.64978 14.561L13.6728 20.3987L21.1625 10.8203" stroke="white" stroke-linecap="round"/>
+<path d="M9.64978 14.561L13.6728 20.3987L21.1625 10.8203" stroke="white" strokeLinecap="round"/>
 </g>
 <defs>
 <filter id="filter0_i_3561_18924" x="0.749878" y="0" width="31" height="30" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
