@@ -1,6 +1,6 @@
 import { CHAIN_NAMESPACES, CustomChainConfig } from "@web3auth/base";
 import { SupportedChainId } from "./chains";
-import { INFURA_NETWORK_URLS } from 'constants/infura';
+import { INFURA_NETWORK_URLS } from "constants/infura";
 
 export const CHAIN_CONFIG = {
   mainnet: {
@@ -32,12 +32,39 @@ export const CHAIN_CONFIG = {
   } as CustomChainConfig,
   polygon: {
     chainNamespace: CHAIN_NAMESPACES.EIP155,
-    rpcTarget: 'https://polygon-rpc.com/',
+    rpcTarget: "https://polygon-rpc.com/",
     blockExplorer: "https://polygonscan.com/",
     chainId: "0x89",
     displayName: "Polygon Mainnet",
     ticker: "MATIC",
     tickerName: "Matic",
+  } as CustomChainConfig,
+  base: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    rpcTarget: "https://mainnet.base.org/",
+    blockExplorer: "https://basescan.org/",
+    chainId: "0x2105",
+    displayName: "Base Mainnet",
+    ticker: "ETH",
+    tickerName: "ETH",
+  } as CustomChainConfig,
+  arbitrum: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    rpcTarget: "https://arb1.arbitrum.io/rpc/",
+    blockExplorer: "https://arbiscan.io/",
+    chainId: "0xa4b1",
+    displayName: "Arbitrum One",
+    ticker: "ETH",
+    tickerName: "Ethereum",
+  } as CustomChainConfig,
+  optimism: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    rpcTarget: "https://mainnet.optimism.io/",
+    blockExplorer: "https://optimistic.etherscan.io/",
+    chainId: "0xa",
+    displayName: "OP Mainnet",
+    ticker: "ETH",
+    tickerName: "ETH",
   } as CustomChainConfig,
 } as const;
 
