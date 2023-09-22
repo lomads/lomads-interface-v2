@@ -81,7 +81,10 @@ export const DAOProvider = ({ privateRoute = false, children }: any) => {
       }
       else
         // navigate(`/organisation/create`)
-        navigate(`/starter`)
+        if(window.location.pathname !== '/')
+          navigate(`${window.location.pathname}`)
+        else
+          navigate(`/starter`)
     }
   }, [DAOList, from])
 

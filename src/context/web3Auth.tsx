@@ -70,7 +70,7 @@ const handleAccountsChanged = async () => {
       dispatch(setUserAction(null))
       dispatch(logoutAction())
       await logout()
-      await localStorage.setItem("MANUAL_DISCONNECT", "true")
+      await sessionStorage.setItem("MANUAL_DISCONNECT", "true")
     } catch(e) {
       console.log(e)
     }
@@ -78,20 +78,22 @@ const handleAccountsChanged = async () => {
 
 const handleNetworkChanged = async (chainId: any) => {
     try {
+      let chainInfo = CHAIN_INFO[chainId]
+      dispatch(setNetworkConfig({ selectedChainId: +_get(window?.ethereum, 'networkVersion', SupportedChainId.POLYGON), chain: chainInfo.chainName, web3AuthNetwork: chainInfo.network }))
       window.location.reload();
     } catch(e) {
       console.log(e)
     }
 }
 
-// useEffect(() => {
-//   if(window?.ethereum) {
-//       let chainInfo = CHAIN_INFO[+_get(window?.ethereum, 'networkVersion', SupportedChainId.POLYGON)]
-//       if(!chainInfo)
-//         chainInfo = CHAIN_INFO[SupportedChainId.POLYGON]
-//       dispatch(setNetworkConfig({ selectedChainId: +_get(window?.ethereum, 'networkVersion', SupportedChainId.POLYGON), chain: chainInfo.chainName, web3AuthNetwork: chainInfo.network }))
-//   }
-// }, [])
+useEffect(() => {
+  if(window?.ethereum) {
+      let chainInfo = CHAIN_INFO[+_get(window?.ethereum, 'networkVersion', SupportedChainId.POLYGON)]
+      if(!chainInfo)
+        chainInfo = CHAIN_INFO[SupportedChainId.POLYGON]
+      dispatch(setNetworkConfig({ selectedChainId: +_get(window?.ethereum, 'networkVersion', SupportedChainId.POLYGON), chain: chainInfo.chainName, web3AuthNetwork: chainInfo.network }))
+  }
+}, [window?.ethereum])
 
 useEffect(() => {
   if(window?.ethereum)
@@ -104,16 +106,16 @@ useEffect(() => {
   };
   }, []);
 
-  // useEffect(() => {
-  //   if(window?.ethereum)
-  //     //@ts-ignore
-  //     window?.ethereum.on('networkChanged', handleNetworkChanged);
-  //   return () => {
-  //     if(window?.ethereum)
-  //       //@ts-ignore
-  //       window?.ethereum.removeListener('networkChanged', handleNetworkChanged);
-  //   };
-  //   }, []);
+  useEffect(() => {
+    if(window?.ethereum)
+      //@ts-ignore
+      window?.ethereum.on('networkChanged', handleNetworkChanged);
+    return () => {
+      if(window?.ethereum)
+        //@ts-ignore
+        window?.ethereum.removeListener('networkChanged', handleNetworkChanged);
+    };
+    }, []);
 
   useEffect(() => {
     const subscribeAuthEvents = (web3auth: Web3AuthNoModal) => {
