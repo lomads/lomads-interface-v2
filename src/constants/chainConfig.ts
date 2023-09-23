@@ -48,6 +48,24 @@ export const CHAIN_CONFIG = {
     ticker: "ETH",
     tickerName: "ETH",
   } as CustomChainConfig,
+  arbitrum: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    rpcTarget: "https://arb1.arbitrum.io/rpc/",
+    blockExplorer: "https://arbiscan.io/",
+    chainId: "0xa4b1",
+    displayName: "Arbitrum One",
+    ticker: "ETH",
+    tickerName: "Ethereum",
+  } as CustomChainConfig,
+  optimism: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    rpcTarget: "https://mainnet.optimism.io/",
+    blockExplorer: "https://optimistic.etherscan.io/",
+    chainId: "0xa",
+    displayName: "OP Mainnet",
+    ticker: "ETH",
+    tickerName: "ETH",
+  } as CustomChainConfig,
 } as const;
 
 export type CHAIN_CONFIG_TYPE = keyof typeof CHAIN_CONFIG;

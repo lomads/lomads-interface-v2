@@ -159,16 +159,11 @@ export const Web3AuthProvider: FunctionComponent<IWeb3AuthState> = ({
         setIsLoading(true);
         const clientId = _get(WEB3AUTH_NETWORK, `cyan.clientId`);
         const chainId = await getChainId();
-        const chainName: any = CHAIN_IDS_TO_NAMES[`${chainId}`];
-
-        if (!chainName) {
-          console.log("Wrong network");
-          return;
-        }
+        const chainName: any = CHAIN_IDS_TO_NAMES[`${chainId}`] || "polygon";
 
         const web3AuthInstance = new Web3AuthNoModal({
           web3AuthNetwork: "cyan",
-          chainConfig: _get(CHAIN_CONFIG, chainName, "polygon"),
+          chainConfig: _get(CHAIN_CONFIG, chainName),
           enableLogging: true,
           clientId: clientId || "",
         });
