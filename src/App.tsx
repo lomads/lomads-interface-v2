@@ -59,17 +59,17 @@ const App = () => {
                       );
                     })}
                     {/* <Route
-                                            element={
-                                                    <PrivateRoute orRender= {
-                                                    <Landing>
-                                                        <PageNotFound />
-                                                    </Landing>
-                                                } 
-                                            private={false}
-                                            />}
-                                            key={'notfound'}
-                                            path={'*'}
-                                        /> */}
+                        element={
+                                <PrivateRoute orRender= {
+                                <Landing>
+                                    <PageNotFound />
+                                </Landing>
+                            } 
+                        private={false}
+                        />}
+                        key={'notfound'}
+                        path={'*'}
+                    /> */}
                   </Routes>
                 </Router>
               </LocalizationProvider>
