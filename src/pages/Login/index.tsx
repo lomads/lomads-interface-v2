@@ -19,6 +19,9 @@ import { WALLET_ADAPTERS } from "@web3auth/base";
 import Modal from "@mui/material/Modal";
 
 import screenshot from "assets/svg/screenshot 1.svg";
+import { loadDAOListAction } from "store/actions/dao";
+import { useDAO } from "context/dao";
+import { useAppSelector } from "helpers/useAppSelector";
 
 const style = {
   position: "absolute" as "absolute",
@@ -105,27 +108,63 @@ const Login = () => {
   const [openModal, setOpen] = React.useState(false);
   const { token, user } = useSelector((store: any) => store.session);
   const { login, account, logout, web3Auth } = useWeb3Auth();
+  const { DAOList } = useDAO();
+  const [logined, setLogined] = React.useState("inlineFlex");
 
   const handleOpenModal = () => {
     setOpen(true);
   };
+
   const handleCloseModal = () => {
     setOpen(false);
   };
 
+  const hasUncompletedDao = (_daoList: any) => {
+    const uncompletedDas = _daoList.filter(
+      (item: any) => item.safes.length === 0
+    );
+    return uncompletedDas.length ? uncompletedDas[0] : false;
+  };
+
+  function isArray(value: any) {
+    return Array.isArray(value);
+  }
+
   useEffect(() => {
     if (token && user && account) {
-      if (from) {
-        const manDisc = localStorage.getItem("MANUAL_DISCONNECT");
-        if (!manDisc) navigate(from);
-        else {
-          localStorage.removeItem("MANUAL_DISCONNECT");
-          navigate("/");
-        }
-      } else navigate("/");
+      setLogined("none");
+      dispatch(loadDAOListAction());
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token, user, account]);
+
+  useEffect(() => {
+    if (token && user && account) {
+      if (DAOList !== null && isArray(DAOList)) {
+        if (DAOList?.length) {
+          const uncompletedDao = hasUncompletedDao(DAOList);
+          if (uncompletedDao) {
+            navigate(`/${uncompletedDao?.url}/attach-safe/new`, {
+              replace: true,
+              state: { createFlow: true },
+            });
+          } else {
+            if (from) {
+              const manDisc = localStorage.getItem("MANUAL_DISCONNECT");
+              if (!manDisc) navigate(from);
+              else {
+                localStorage.removeItem("MANUAL_DISCONNECT");
+                navigate("/");
+              }
+            }
+          }
+        } else {
+          navigate("/");
+        }
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [DAOList, token, user, account]);
 
   const handleLogin = async (
     loginType = WALLET_ADAPTERS.METAMASK,
@@ -159,7 +198,7 @@ const Login = () => {
             display="flex"
             flexDirection="row"
             alignItems="center"
-            style={{ float: "right" }}
+            style={{ float: "right", display: logined }}
           >
             <Link
               rel="noopener noreferrer"
