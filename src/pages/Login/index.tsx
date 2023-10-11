@@ -97,6 +97,21 @@ const useStyles = makeStyles((theme: any) => ({
     minWidth: "inherit !importnt",
     padding: "0px !important",
   },
+  subtitle1: {
+    fontSize: "24px !important",
+    fontWeight: "400 !important",
+    lineHeight: "30px !important",
+    textAlign: "center",
+    color: "#B12F15",
+    margin: "30px 0 !important",
+  },
+  subtitle2: {
+    fontSize: "38px !important",
+    lineHeight: "42px !important",
+    textTransform: "uppercase",
+    color: "#1B2B41",
+    textAlign: "center",
+  },
 }));
 
 const Login = () => {
@@ -399,7 +414,29 @@ const Login = () => {
               </Box>
             </Box>
           </Box>
-          <Box height={200}></Box>
+          <Box sx={{ padding: "0 30px" }}>
+            <Typography className={classes.subtitle1}>
+              Lomads app needs a PC
+              <br />
+              for now.
+            </Typography>
+            <Typography
+              className={classes.subtitle2}
+              sx={{ fontWeight: "800" }}
+            >
+              CATCH YOU ON <br />
+              THE{" "}
+              <span
+                style={{
+                  fontWeight: "300",
+                  fontStyle: "italic",
+                  color: "#C94B32",
+                }}
+              >
+                BIG SCREEN
+              </span>
+            </Typography>
+          </Box>
         </Grid>
       </Grid>
       <Modal
