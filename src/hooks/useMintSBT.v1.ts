@@ -110,6 +110,7 @@ const useMintSBT = (contractAddress: string | undefined, version: string | undef
     }, [version, contractAddress, chainId, account])
 
     const payByCrypto = async (tokenContract: any) => {
+      
       if(window.ethereum) {
         const stats = await getStats();
         const treasury = stats[5];

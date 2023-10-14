@@ -28,9 +28,9 @@ export const CHAIN_IDS_TO_NAMES = {
 /**
  * Array of all the supported chain IDs
  */
-export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = Object.values(SupportedChainId).filter(
-  (id) => typeof id === 'number'
-) as SupportedChainId[]
+export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = Object.values(
+  SupportedChainId
+).filter((id) => typeof id === "number") as SupportedChainId[];
 
 export const SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
   SupportedChainId.MAINNET,
@@ -68,13 +68,13 @@ export const GNOSIS_SAFE_ALLOWANCE_MODULE_CONTRACT :any = {
   [SupportedChainId.AVALANCHE]:'0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134',
 }
 
-export const CHAIN_GAS_STATION :any = {
+export const CHAIN_GAS_STATION: any = {
   [SupportedChainId.POLYGON]: {
-    url: 'https://gasstation-mainnet.matic.network/v2',
-    symbol: 'GWei'
+    url: "https://gasstation-mainnet.matic.network/v2",
+    symbol: "GWei",
   },
-  [SupportedChainId.GOERLI]: ''
-}
+  [SupportedChainId.GOERLI]: "",
+};
 
 export const SUPPORTED_ASSETS = {
   [`${SupportedChainId.MAINNET}`]: {
@@ -116,24 +116,28 @@ export const SUPPORTED_ASSETS = {
 
 };
 
+export const WEB3AUTH_NETWORK = {
+  mainnet: {
+    displayName: "Mainnet",
+    clientId:
+      "BB7Cycr4trvRLqKMQViPrMUz5pJ2OTezkMzezdvoZ3wYvtepFGqOWwJBOZVTMtcmZNgBKsMUqGi5NZ9xvJjNThw",
+    googleClientId:
+      "490211141645-b4jreehsanlfkf8ag88c8rq1q2f4603d.apps.googleusercontent.com",
+  },
+  testnet: {
+    displayName: "Testnet",
+    clientId:
+      "BPtseKNlLAexW69f-3RI3smDoUg4JH0OUdq5yckWnIfs78EP_GDpHQTS66q8cVihnjXHulzGP9mUh5wdpRajQns",
+    googleClientId:
+      "490211141645-6gbbufuedlrnq8s2ilmq21nkq30aguh4.apps.googleusercontent.com",
+  },
+  cyan: {
+    displayName: "Cyan",
+    clientId:
+      "BHI9J8T5iU84wSJunaui1EABfRAvlBlxg-iN86jUXbi4IZ9uGOcqh5pJSBwsag0ObEA1eC1KiBvEDVcAZN0FU84",
+    googleClientId:
+      "490211141645-b4jreehsanlfkf8ag88c8rq1q2f4603d.apps.googleusercontent.com",
+  },
+} as const;
 
-
-  export const WEB3AUTH_NETWORK = {
-    mainnet: {
-      displayName: "Mainnet",
-      clientId: "BB7Cycr4trvRLqKMQViPrMUz5pJ2OTezkMzezdvoZ3wYvtepFGqOWwJBOZVTMtcmZNgBKsMUqGi5NZ9xvJjNThw",
-      googleClientId: "490211141645-b4jreehsanlfkf8ag88c8rq1q2f4603d.apps.googleusercontent.com"
-    },
-    testnet: {
-      displayName: "Testnet",
-      clientId: "BPtseKNlLAexW69f-3RI3smDoUg4JH0OUdq5yckWnIfs78EP_GDpHQTS66q8cVihnjXHulzGP9mUh5wdpRajQns",
-      googleClientId: "490211141645-6gbbufuedlrnq8s2ilmq21nkq30aguh4.apps.googleusercontent.com"
-    },
-    cyan: {
-      displayName: "Cyan",
-      clientId: "BHI9J8T5iU84wSJunaui1EABfRAvlBlxg-iN86jUXbi4IZ9uGOcqh5pJSBwsag0ObEA1eC1KiBvEDVcAZN0FU84",
-      googleClientId: "490211141645-b4jreehsanlfkf8ag88c8rq1q2f4603d.apps.googleusercontent.com"
-    },
-  } as const;
-  
-  export type WEB3AUTH_NETWORK_TYPE = keyof typeof WEB3AUTH_NETWORK;
+export type WEB3AUTH_NETWORK_TYPE = keyof typeof WEB3AUTH_NETWORK;

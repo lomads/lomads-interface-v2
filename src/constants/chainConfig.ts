@@ -1,6 +1,6 @@
 import { CHAIN_NAMESPACES, CustomChainConfig } from "@web3auth/base";
 import { SupportedChainId } from "./chains";
-import { INFURA_NETWORK_URLS } from 'constants/infura';
+import { INFURA_NETWORK_URLS } from "constants/infura";
 
 
 export const CHAIN_CONFIG = {
@@ -33,7 +33,7 @@ export const CHAIN_CONFIG = {
   } as CustomChainConfig,
   polygon: {
     chainNamespace: CHAIN_NAMESPACES.EIP155,
-    rpcTarget: 'https://polygon-rpc.com/',
+    rpcTarget: "https://polygon-rpc.com/",
     blockExplorer: "https://polygonscan.com/",
     chainId: "0x89",
     displayName: "Polygon Mainnet",

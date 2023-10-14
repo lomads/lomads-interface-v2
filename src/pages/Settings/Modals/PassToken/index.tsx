@@ -28,10 +28,10 @@ import { useDAO } from 'context/dao';
 
 const LOCK_SVG = `<svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2971_2676)">
-<path d="M10.76 6.22021H2.12C1.50144 6.22021 1 6.72166 1 7.34022V12.9102C1 13.5288 1.50144 14.0302 2.12 14.0302H10.76C11.3786 14.0302 11.88 13.5288 11.88 12.9102V7.34022C11.88 6.72166 11.3786 6.22021 10.76 6.22021Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M9.70992 5.94V3.77C9.70992 1.96 8.24992 0.5 6.43992 0.5C4.62992 0.5 3.16992 1.96 3.16992 3.77V6.08" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M6.43994 10.2798V11.9598" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M6.4402 10.2002C6.98696 10.2002 7.4302 9.75698 7.4302 9.21021C7.4302 8.66345 6.98696 8.22021 6.4402 8.22021C5.89343 8.22021 5.4502 8.66345 5.4502 9.21021C5.4502 9.75698 5.89343 10.2002 6.4402 10.2002Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.76 6.22021H2.12C1.50144 6.22021 1 6.72166 1 7.34022V12.9102C1 13.5288 1.50144 14.0302 2.12 14.0302H10.76C11.3786 14.0302 11.88 13.5288 11.88 12.9102V7.34022C11.88 6.72166 11.3786 6.22021 10.76 6.22021Z" stroke="white" strokeLinecap="round" stroke-linejoin="round"/>
+<path d="M9.70992 5.94V3.77C9.70992 1.96 8.24992 0.5 6.43992 0.5C4.62992 0.5 3.16992 1.96 3.16992 3.77V6.08" stroke="white" strokeLinecap="round" stroke-linejoin="round"/>
+<path d="M6.43994 10.2798V11.9598" stroke="white" strokeLinecap="round" stroke-linejoin="round"/>
+<path d="M6.4402 10.2002C6.98696 10.2002 7.4302 9.75698 7.4302 9.21021C7.4302 8.66345 6.98696 8.22021 6.4402 8.22021C5.89343 8.22021 5.4502 8.66345 5.4502 9.21021C5.4502 9.75698 5.89343 10.2002 6.4402 10.2002Z" stroke="white" strokeLinecap="round" stroke-linejoin="round"/>
 </g>
 <defs>
 <clipPath id="clip0_2971_2676">
