@@ -9,6 +9,7 @@ import { PersistGate } from "redux-persist/lib/integration/react";
 import { Web3AuthProvider } from "context/web3Auth";
 import { DAOProvider } from "context/dao";
 import { SafeTokensProvider } from "context/safeTokens";
+import { SafeNFTsProvider } from "context/safeNFTs";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import routes from "routes";
 import PrivateRoute from "components/PrivateRoute";
@@ -42,16 +43,18 @@ const App = () => {
                           key={index}
                           element={
                             <DAOProvider privateRoute={route.private}>
-                              <SafeTokensProvider>
-                                <PrivateRoute
-                                  orRender={
-                                    <route.layout>
-                                      <route.component />
-                                    </route.layout>
-                                  }
-                                  private={route.private}
-                                />
-                              </SafeTokensProvider>
+                              <SafeNFTsProvider>
+                                <SafeTokensProvider>
+                                  <PrivateRoute
+                                    orRender={
+                                      <route.layout>
+                                        <route.component />
+                                      </route.layout>
+                                    }
+                                    private={route.private}
+                                  />
+                                </SafeTokensProvider>
+                              </SafeNFTsProvider>
                             </DAOProvider>
                           }
                           path={route.path}
