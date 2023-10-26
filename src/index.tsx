@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App'
 import reportWebVitals from './reportWebVitals';
+import "./index.css";
 
-const documentFragment = document.getElementById('root')
+const documentFragment = document.getElementById("root");
 if(documentFragment) {
   const root = ReactDOM.createRoot(documentFragment);
   root.render(<App />);
