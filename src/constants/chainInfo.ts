@@ -178,7 +178,7 @@ export const CHAIN_INFO: any = {
     network: 'cyan',
     chainName: 'avax'
   },
-  [SupportedChainId.ARTHERA]: {
+/*   [SupportedChainId.ARTHERA]: {
     networkType: NetworkType.L1,
     blockWaitMsBeforeWarning: `10m`,
     docs: 'https://docs.arthera.net/',
@@ -192,5 +192,5 @@ export const CHAIN_INFO: any = {
     chainId: '0x2803',
     network: 'cyan',
     chainName: 'arthera'
-  }
+  } */
 }

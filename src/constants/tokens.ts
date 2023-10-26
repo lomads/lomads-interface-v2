@@ -73,13 +73,13 @@ export const USDC_GNOSIS = new Token(
   'USD//C'
 )
 
-export const USDC_ARTHERA = new Token(
+/* export const USDC_ARTHERA = new Token(
   SupportedChainId.ARTHERA,
   '0x83D4a9Ea77a4dbA073cD90b30410Ac9F95F93E7C',
   6,
   'USDC',
   'USD//C'
-)
+) */
 
 export const AMPL = new Token(
   SupportedChainId.MAINNET,
@@ -106,7 +106,7 @@ export const USDC: { [chainId in SupportedChainId]: Token } = {
   [SupportedChainId.OPTIMISM]: USDC_OPT,
   [SupportedChainId.ARBITRUM]: USDC_ARB,
   [SupportedChainId.AVALANCHE]: USDC_AVAX,
-  [SupportedChainId.ARTHERA]: USDC_ARTHERA,
+/*   [SupportedChainId.ARTHERA]: USDC_ARTHERA, */
 }
 
 export const DAI_POLYGON = new Token(

@@ -11,7 +11,7 @@ export enum SupportedChainId {
   OPTIMISM = 10,
   ARBITRUM = 42161,
   AVALANCHE = 43114,
-  ARTHERA = 10243,
+/*   ARTHERA = 10243, */
 }
 
 export const CHAIN_IDS_TO_NAMES = {
@@ -24,7 +24,7 @@ export const CHAIN_IDS_TO_NAMES = {
   [`${SupportedChainId.OPTIMISM}`]:'opt',
   [`${SupportedChainId.ARBITRUM}`]:'arb',
   [`${SupportedChainId.AVALANCHE}`]:'avax',
-  [`${SupportedChainId.ARTHERA}`]:'arthera'
+ /*  [`${SupportedChainId.ARTHERA}`]:'arthera' */
 }
 
 /**
@@ -44,7 +44,7 @@ export const SUPPORTED_CHAIN_IDS: SupportedChainId[] = [
   SupportedChainId.OPTIMISM,
   SupportedChainId.ARBITRUM,
   SupportedChainId.AVALANCHE,
-  SupportedChainId.ARTHERA
+ /*  SupportedChainId.ARTHERA */
 ]
 
 export const GNOSIS_SAFE_BASE_URLS:any = {
@@ -57,7 +57,7 @@ export const GNOSIS_SAFE_BASE_URLS:any = {
   [SupportedChainId.OPTIMISM]:'https://safe-transaction-optimism.safe.global',
   [SupportedChainId.ARBITRUM]:'https://safe-transaction-arbitrum.safe.global',
   [SupportedChainId.AVALANCHE]:'https://safe-transaction-avalanche.safe.global',
-  [SupportedChainId.ARTHERA]:'https://safe-transaction-arthera.safe.global',
+ /*  [SupportedChainId.ARTHERA]:'https://safe-transaction-arthera.safe.global', */
 }
 
 export const GNOSIS_SAFE_ALLOWANCE_MODULE_CONTRACT :any = {
@@ -70,7 +70,7 @@ export const GNOSIS_SAFE_ALLOWANCE_MODULE_CONTRACT :any = {
   [SupportedChainId.OPTIMISM]:'0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134',
   [SupportedChainId.ARBITRUM]:'0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134',
   [SupportedChainId.AVALANCHE]:'0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134',
-  [SupportedChainId.ARTHERA]:'0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134',
+ /*  [SupportedChainId.ARTHERA]:'0xCFbFaC74C26F8647cBDb8c5caf80BB5b32E43134', */
 }
 
 export const CHAIN_GAS_STATION :any = {
@@ -118,10 +118,10 @@ export const SUPPORTED_ASSETS = {
     id: "avax",
     symbol: "AVAX",
   },
-  [`${SupportedChainId.ARTHERA}`]: {
+/*   [`${SupportedChainId.ARTHERA}`]: {
     id: "AA",
     symbol: "AA",
-  },
+  }, */
 
 };
 
