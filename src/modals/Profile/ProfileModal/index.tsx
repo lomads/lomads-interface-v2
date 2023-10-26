@@ -116,7 +116,7 @@ export default ({ open, closeModal }: Props) => {
         return count
     }, [chain, computedTxns])
 
-    useEffect(() => {
+/*     useEffect(() => {
         async function getNFTS() {
             computeBalance([SupportedChainId.GOERLI, SupportedChainId.POLYGON, SupportedChainId.MAINNET]);
             const res  = await fetch(`https://safe-transaction-mainnet.safe.global/api/v2/safes/0xe98134dCe5959Eb8D13b7d6543b8E16a20ed973E/collectibles/?trusted=false&exclude_spam=false`)
@@ -130,6 +130,11 @@ export default ({ open, closeModal }: Props) => {
         if (account && provider && chainId) {
             getNFTS()
          }
+    }, [account, provider, chainId]) */
+
+    useEffect(() => {
+        if (account && provider && chainId)
+            computeBalance([SupportedChainId.GOERLI, SupportedChainId.POLYGON, SupportedChainId.MAINNET]);
     }, [account, provider, chainId])
 
     useEffect(() => {
