@@ -6,6 +6,7 @@ import optLogo from 'assets/svg/Opt.svg'
 import arbLogo from 'assets/svg/arb.svg'
 import avaxLogo from 'assets/svg/avax.svg'
 import gnosisLogo from 'assets/svg/gnosis.svg'
+import artheraLogo from 'assets/svg/arthera_logo.svg'
 
 import { SupportedChainId } from './chains'
 
@@ -49,6 +50,7 @@ export const CHAIN_INFO: any = {
     explorer: 'https://etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/',
     opensea: 'https://opensea.io/assets/ethereum/',
+    zerion: 'https://app.zerion.io/nfts/ethereum/',
     label: 'Ethereum',
     logoUrl: ethereumLogoUrl,
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
@@ -62,6 +64,7 @@ export const CHAIN_INFO: any = {
     explorer: 'https://goerli.etherscan.io/',
     infoLink: 'https://info.uniswap.org/#/',
     opensea: 'https://testnets.opensea.io/assets/goerli/',
+    zerion: 'https://app.zerion.io/nfts/goerli/',
     label: 'Görli',
     logoUrl: ethereumLogoUrl,
     nativeCurrency: { name: 'Görli Ether', symbol: 'GörETH', decimals: 18 },
@@ -76,6 +79,7 @@ export const CHAIN_INFO: any = {
     docs: 'https://polygon.io/',
     explorer: 'https://polygonscan.com/',
     opensea: 'https://opensea.io/assets/matic/',
+    zerion: 'https://app.zerion.io/nfts/polygon/',
     infoLink: 'https://info.uniswap.org/#/polygon/',
     label: 'Polygon',
     logoUrl: polygonMaticLogo,
@@ -91,6 +95,7 @@ export const CHAIN_INFO: any = {
     explorer: 'https://celoscan.io/',
     opensea: 'https://opensea.io/assets/celo/',
     infoLink: 'https://info.uniswap.org/#/celo/',
+    zerion: 'https://app.zerion.io/nfts/celo/',
     label: 'Celo',
     logoUrl: celoLogo,
     nativeCurrency: { name: 'Celo Native Asset', symbol: 'CELO', decimals: 18 },
@@ -104,6 +109,7 @@ export const CHAIN_INFO: any = {
     docs: '	https://mainnet.base.org',
     explorer: '	https://mainnet.base.org',
     opensea: 'https://opensea.io/assets/base/',
+    zerion: 'https://app.zerion.io/nfts/base/',
     infoLink: 'https://info.uniswap.org/#/base/',
     label: 'Base',
     logoUrl: baseLogo,
@@ -118,6 +124,7 @@ export const CHAIN_INFO: any = {
     docs: '	https://mainnet.base.org',
     explorer: '	https://mainnet.base.org',
     opensea: 'https://opensea.io/assets/gnosis/',
+    zerion: 'https://app.zerion.io/nfts/gnosis/',
     infoLink: 'https://info.uniswap.org/#/gnosis/',
     label: 'Gnosis',
     logoUrl: gnosisLogo,
@@ -132,6 +139,7 @@ export const CHAIN_INFO: any = {
     docs: '	https://mainnet.base.org',
     explorer: '	https://mainnet.base.org',
     opensea: 'https://opensea.io/assets/optimism/',
+    zerion: 'https://app.zerion.io/nfts/optimism/',
     infoLink: 'https://info.uniswap.org/#/optimism/',
     label: 'Optimism',
     logoUrl: optLogo,
@@ -146,6 +154,7 @@ export const CHAIN_INFO: any = {
     docs: '	https://mainnet.base.org',
     explorer: '	https://mainnet.base.org',
     opensea: 'https://opensea.io/assets/arbitrum/',
+    zerion: 'https://app.zerion.io/nfts/arbitrum/',
     infoLink: 'https://info.uniswap.org/#/arbitrum/',
     label: 'Arbitrum',
     logoUrl: arbLogo,
@@ -160,6 +169,7 @@ export const CHAIN_INFO: any = {
     docs: '	https://mainnet.base.org',
     explorer: '	https://mainnet.base.org',
     opensea: 'https://opensea.io/assets/avalanche/',
+    zerion: 'https://app.zerion.io/nfts/avalanche/',
     infoLink: 'https://info.uniswap.org/#/avalanche/',
     label: 'Avax',
     logoUrl: avaxLogo,
@@ -167,5 +177,20 @@ export const CHAIN_INFO: any = {
     chainId: '0xA86A',
     network: 'cyan',
     chainName: 'avax'
-  }
+  },
+/*   [SupportedChainId.ARTHERA]: {
+    networkType: NetworkType.L1,
+    blockWaitMsBeforeWarning: `10m`,
+    docs: 'https://docs.arthera.net/',
+    explorer: 'https://explorer-test.arthera.net/',
+    opensea: 'https://opensea.io/assets/arthera/',
+    zerion: 'https://app.zerion.io/nfts/arthera/',
+    infoLink: 'https://info.uniswap.org/#/arthera/',
+    label: 'AA',
+    logoUrl: artheraLogo,
+    nativeCurrency: { name: 'Arthera Native Asset', symbol: 'AA', decimals: 18 },
+    chainId: '0x2803',
+    network: 'cyan',
+    chainName: 'arthera'
+  } */
 }

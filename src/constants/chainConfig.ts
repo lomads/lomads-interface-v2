@@ -85,6 +85,15 @@ export const CHAIN_CONFIG = {
     ticker: "ETH",
     tickerName: "Arbitrum",
   } as CustomChainConfig,
+/*   arthera: {
+    chainNamespace: CHAIN_NAMESPACES.EIP155,
+    rpcTarget: 'https://rpc-test.arthera.net/',
+    blockExplorer: "https://explorer-test.arthera.net/",
+    chainId: '0x2803',
+    displayName: "Arthera",
+    ticker: "AA",
+    tickerName: "AA",
+  } as CustomChainConfig, */
   avax: {
     chainNamespace: CHAIN_NAMESPACES.EIP155,
     rpcTarget: 'https://api.avax.network/ext/bc/C/rpc',

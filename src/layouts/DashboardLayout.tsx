@@ -281,7 +281,7 @@ export default ({ children }: any) => {
                 placement="right"
                 title="All your organisations are here">
                   <span>
-                    <HeaderLogo dao={DAO} onMouseLeave={hideDrawer} onMouseEnter={showDrawer} />
+                    <HeaderLogo dao={DAO} onMouseLeave={hideDrawer} onMouseEnter={showDrawer}/>
                   </span>
               </BootstrapTooltip> :
               <Skeleton variant="rectangular" animation="wave" width={116} height={107} sx={{ borderBottomRightRadius: 30 }} />

@@ -20,6 +20,8 @@ export function getRpcUrls(chainId: SupportedChainId): [string] {
         return ['https://arb1.arbitrum.io/rpc']
       case SupportedChainId.AVALANCHE:
         return ['https://api.avax.network/ext/bc/C/rpc']
+/*       case SupportedChainId.ARTHERA:
+        return ['https://rpc-test.arthera.net/'] */
       default:
     }
     // Our API-keyed URLs will fail security checks when used with external wallets.

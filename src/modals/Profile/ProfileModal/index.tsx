@@ -68,13 +68,14 @@ export default ({ open, closeModal }: Props) => {
     const { account, provider, chainId, openWallet, switchChain, web3Auth } = useWeb3Auth();
     // @ts-ignore
     const { user, transactions } = useAppSelector(store => store?.session);
-    console.log("user : ", user)
 
     const [name, setName] = useState<string>('');
     const [errorName, setErrorName] = useState('');
 
     const [chain, setChain] = useState<any>('all');
     const [nftData, setNftData] = useState<any>({})
+    const [tokenData, setTokenData] = useState<any>({})
+
 
     useEffect(() => {
         if (open == true) {
@@ -115,6 +116,22 @@ export default ({ open, closeModal }: Props) => {
         return count
     }, [chain, computedTxns])
 
+/*     useEffect(() => {
+        async function getNFTS() {
+            computeBalance([SupportedChainId.GOERLI, SupportedChainId.POLYGON, SupportedChainId.MAINNET]);
+            const res  = await fetch(`https://safe-transaction-mainnet.safe.global/api/v2/safes/0xe98134dCe5959Eb8D13b7d6543b8E16a20ed973E/collectibles/?trusted=false&exclude_spam=false`)
+            const data = await res.json()
+            setNftData(data.results)
+
+            const tokens = await fetch('https://safe-transaction-mainnet.safe.global/api/v1/safes/0xe98134dCe5959Eb8D13b7d6543b8E16a20ed973E/balances/?trusted=false&exclude_spam=false')
+            const tokenData = await tokens.json()
+            setTokenData(tokenData)
+        }
+        if (account && provider && chainId) {
+            getNFTS()
+         }
+    }, [account, provider, chainId]) */
+
     useEffect(() => {
         if (account && provider && chainId)
             computeBalance([SupportedChainId.GOERLI, SupportedChainId.POLYGON, SupportedChainId.MAINNET]);
@@ -125,6 +142,11 @@ export default ({ open, closeModal }: Props) => {
             setName(user.name)
         }
     }, [user]);
+
+
+
+    // https://safe-transaction-mainnet.safe.global/api/v2/safes/0xe98134dCe5959Eb8D13b7d6543b8E16a20ed973E/collectibles/?trusted=false&exclude_spam=false
+    // https://safe-transaction-mainnet.safe.global/api/v1/safes/0xe98134dCe5959Eb8D13b7d6543b8E16a20ed973E/balances/?trusted=false&exclude_spam=false
 
     const computeBalance = async (chain: any[]) => {
         let res = await Promise.all(chain.map(async (item) =>
