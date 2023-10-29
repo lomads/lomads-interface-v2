@@ -2,6 +2,7 @@
 import axiosHttp from 'api'
 import { useWeb3Auth } from 'context/web3Auth';
 const ascii85 = require('ascii85');
+const { toChecksumAddress } = require('ethereum-checksum-address')
 
 export default () => {
 
@@ -32,7 +33,7 @@ export default () => {
       try {
         if(provider) {
           /* @ts-ignore */
-          const decrypt = await provider?.send("eth_decrypt",[message, account]);
+          const decrypt = await provider?.send("eth_decrypt",[message, toChecksumAddress(account)]);
           return JSON.parse(new TextDecoder("utf-8").decode(ascii85.decode(decrypt)));
         }
         return null;
