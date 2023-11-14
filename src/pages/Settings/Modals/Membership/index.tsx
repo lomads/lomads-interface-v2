@@ -5,7 +5,6 @@ import { Drawer, Box, Typography, Paper } from '@mui/material'
 import IconButton from 'components/IconButton'
 import Button from 'components/Button'
 import Switch from 'components/Switch'
-import Switch2 from 'components/Switch/index.v2'
 import CurrencyInput from 'components/CurrencyInput'
 import CloseSVG from 'assets/svg/close-new.svg'
 import MintSBTSvg from 'assets/svg/mintsbt.svg'
@@ -128,7 +127,6 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
       value: 0,
     },
   })
-  const [onboardingMethod, setOnboardingMethod] = useState<boolean>(false)
 
   useEffect(() => {
     if (DAO) setChainId(_get(DAO, 'sbt.chainId', _get(DAO, 'chainId')))
@@ -162,7 +160,6 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
           },
         }
       })
-      setOnboardingMethod(contract.whitelisted)
     }
   }, [contract])
 
@@ -183,7 +180,6 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
     }
   }, [chainId])
 
-  console.log('DAO sbt:', DAO.sbt)
   useEffect(() => {
     if (DAO?.sbt) setContract(DAO?.sbt)
   }, [DAO?.sbt])
@@ -249,13 +245,9 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
     })
   }
 
-  const handleOnboardingMethod = (value: boolean) => {
-    setOnboardingMethod(!value)
-  }
-
   return (
     <Box>
-      <Box>
+      <Box sx={{ pb: 6 }}>
         <IconButton
           sx={{ position: 'fixed', right: 32, top: 32 }}
           onClick={() => onClose()}
@@ -290,43 +282,13 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
             Select Open (no-hassle setup) or Whitelisted (added security) to
             match your organizational processes.
           </Typography>
-          <Box
-            sx={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}
-          >
-            <Typography
-              sx={{
-                fontSize: '17px',
-                color: onboardingMethod ? '' : '#c94b32',
-                marginRight: '15px',
-              }}
-            >
-              OPEN FOR ALL
-            </Typography>
-            <Switch2
-              onChange={() => handleOnboardingMethod(onboardingMethod)}
-              checked={onboardingMethod}
-            />
-            <Typography
-              sx={{
-                fontSize: '17px',
-                color: onboardingMethod ? '#c94b32' : '',
-                marginLeft: '15px',
-              }}
-            >
-              WHITELISTED
-            </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Typography>OPEN FOR ALL</Typography>
+            <Switch />
+            <Typography>WHITELISTED</Typography>
           </Box>
         </Box>
       </Box>
-      <Box
-        style={{
-          height: 4,
-          width: 200,
-          alignSelf: 'center',
-          margin: '60px auto',
-          backgroundColor: palette.primary.main,
-        }}
-      ></Box>
       <Box sx={{ pb: 6 }}>
         <IconButton
           sx={{ position: 'fixed', right: 32, top: 32 }}
@@ -675,48 +637,6 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
           </Box>
         )}
       </Box>
-      {contract && (
-        <Box
-          style={{
-            background:
-              'linear-gradient(0deg, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 100%)',
-            width: 430,
-            position: 'fixed',
-            bottom: 0,
-            borderRadius: '0px 0px 0px 20px',
-            padding: '30px 0 20px',
-          }}
-        >
-          <Box
-            display='flex'
-            mt={4}
-            width={380}
-            style={{ margin: '0 auto' }}
-            flexDirection='row'
-          >
-            <Button
-              onClick={() => onClose()}
-              sx={{ mr: 1 }}
-              fullWidth
-              variant='outlined'
-              size='small'
-            >
-              Cancel
-            </Button>
-            <Button
-              disabled={updateContractLoading}
-              loading={updateContractLoading}
-              onClick={() => saveChanges()}
-              sx={{ ml: 1 }}
-              fullWidth
-              variant='contained'
-              size='small'
-            >
-              Save
-            </Button>
-          </Box>
-        </Box>
-      )}
     </Box>
   )
 }
