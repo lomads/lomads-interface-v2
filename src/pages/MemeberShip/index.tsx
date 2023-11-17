@@ -1,19 +1,18 @@
-import React, { useState, useRef, useEffect} from 'react'
-import _ from 'lodash'
-import lomadsfulllogo from '../../assets/svg/lomadsfulllogo.svg'
-import { useNavigate, useLocation, useParams } from 'react-router-dom'
+import React, { useState } from 'react'
+import { get as _get } from 'lodash'
+import { toast } from 'react-hot-toast'
+import { useNavigate, useParams } from 'react-router-dom'
 import { LeapFrog } from '@uiball/loaders'
-import axiosHttp from '../../api'
-import Switch2 from 'components/Switch/index.v2'
-// import { nanoid } from "@reduxjs/toolkit";
-// import { useDropzone } from 'react-dropzone'
-import Button from 'components/Button'
-import uploadIconOrange from '../../assets/svg/ico-upload-orange.svg'
-import { Container, Grid, Typography, Box } from '@mui/material'
 import { makeStyles } from '@mui/styles'
-import { useAppDispatch } from 'helpers/useAppDispatch'
-import { useWeb3Auth } from 'context/web3Auth'
+import { Container, Grid, Typography, Box } from '@mui/material'
 import { useAppSelector } from 'helpers/useAppSelector'
+import { useDAO } from 'context/dao'
+import Switch2 from 'components/Switch/index.v2'
+import IconButton from "components/IconButton"
+import Button from 'components/Button'
+import axiosHttp from '../../api'
+import LINK_SVG from 'assets/svg/ico-link.svg'
+import lomadsfulllogo from '../../assets/svg/lomadsfulllogo.svg'
 
 const useStyles = makeStyles((theme: any) => ({
   root: {
@@ -25,32 +24,6 @@ const useStyles = makeStyles((theme: any) => ({
     justifyContent: 'center',
     overflow: 'hidden !important',
   },
-  maxText: {
-    color: '#1B2D41',
-    opacity: 0.2,
-    letterSpacing: '-0.011em',
-    fontFamily: 'Inter, sans-serif',
-    fontWeight: 400,
-    fontSize: 14,
-  },
-  chooseText: {
-    color: '#C94B32',
-    alignSelf: 'center',
-    letterSpacing: '-0.011em',
-    fontFamily: 'Inter, sans-serif',
-    fontWeight: 400,
-    fontSize: 16,
-  },
-  text: {
-    fontFamily: 'Inter, sans-serif',
-    fontStyle: 'normal',
-    fontWeight: 400,
-    fontSize: 14,
-    letterSpacing: '-0.011em',
-    color: '#76808d',
-    opacity: 0.5,
-    marginLeft: 13,
-  },
   headerText: {
     fontFamily: 'Insignia',
     fontStyle: 'normal',
@@ -61,14 +34,32 @@ const useStyles = makeStyles((theme: any) => ({
     textAlign: 'center',
     color: '#C94B32',
   },
-  inputFieldTitle: {
-    fontFamily: 'Inter, sans-serif',
-    fontStyle: 'normal',
-    fontWeight: 700,
-    fontSize: 16,
-    letterSpacing: '-0.011em',
-    color: '#76808D',
-    margin: '20px 0px 10px 0px',
+  description: {
+    textAlign: 'center', 
+    fontSize: '1rem !important'
+  },
+  subHeaderText: {
+    textAlign: 'center', 
+    fontSize: '20px !important', 
+    color: '#C94B32', 
+    fontWeight: 'bold !important', 
+    marginTop: '80px !important'
+  },
+  switchBox: {
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    marginBottom: '20px'
+  },
+  orgTextLink: {
+    textAlign: 'center', 
+    width: '100%', 
+    fontSize: '0.8rem', 
+    fontWeight: 'bold', 
+    marginBottom: '20px', 
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center'
   },
   createName: {
     margin: '25px 0px 15px 0px',
@@ -87,82 +78,31 @@ const useStyles = makeStyles((theme: any) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  centerCard: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyItems: 'center',
-    background: '#FFFFFF',
-    boxShadow:
-      '3px 5px 4px rgba(27, 43, 65, 0.05), -3px -3px 8px rgba(201, 75, 50, 0.1)',
-    borderRadius: 5,
-    width: 394,
-    padding: '10px 22px 22px 22px',
-    minHeight: 'fit-content',
-  },
-  imagePickerWrapperText: {
-    fontStyle: 'normal',
-    fontWeight: 400,
-    fontSize: 16,
-    color: 'rgba(118, 128, 141, 0.5)',
-    marginLeft: 13,
-  },
-  imagePickerWrapper: {
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  imagePickerContainer: {
-    // width: 200,
-    // height: 200,
-    // borderRadius: 10,
-    // display: 'flex',
-    // flexDirection: 'column',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    // background: '#F5F5F5',
-    // boxShadow: 'inset 1px 0px 4px rgba(27, 43, 65, 0.1)',
-    // cursor: 'pointer',
-    // position: 'relative',
-    // overflow: 'hidden'
-  },
-  informationPerm: {
-    fontFamily: 'Inter, sans-serif',
-    fontStyle: 'italic',
-    weight: 400,
-    fontSize: 14,
-    textAlign: 'center',
-    color: '#76808D',
-  },
-  selectedImg: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 10,
-    objectFit: 'cover',
-  },
-  uploadIcon: {
-    margin: 10,
-  },
 }))
 
 export default () => {
 
-    const { daoURL } = useParams()
-
-  const [onboardingMethod, setOnboardingMethod] = useState<boolean>(false)
-
-  const handleOnboardingMethod = (value: boolean) => {
-    setOnboardingMethod(!value)
-  }
   const classes = useStyles()
-  //@ts-ignore
-  const { user } = useAppSelector((store) => store.session)
-  const { chainId, account } = useWeb3Auth()
-  const [createDAOLoading, setCreateDAOLoading] = useState<boolean>(false)
-  const [DAOListLoading, setDAOListLoading] = useState<boolean>(false)
   const navigate = useNavigate()
 
-  const [state, setState] = useState<any>({})
+  const { daoURL } = useParams()
+  const { DAO } = useDAO()
+  
+  const [whitelisted, setWhitelisted] = useState<boolean>(DAO?.whitelisted)
+  
+  //@ts-ignore
+  const { user } = useAppSelector((store) => store.session)
+  const [createDAOLoading, setCreateDAOLoading] = useState<boolean>(false)
+  const [DAOListLoading, setDAOListLoading] = useState<boolean>(false)
+
+  const handleWhitelisted = (value: boolean) => {
+    setWhitelisted(!value)
+    axiosHttp
+        .patch(`dao/${DAO?.url}/membership/whitelisted`, {id: DAO._id, whitelisted: !value})
+        .then((result) => {
+            navigate(`/${DAO?.url}/welcome`)
+        })
+  }
 
   return (
     <Container>
@@ -189,51 +129,63 @@ export default () => {
         >
           <Box className={classes.headerText}>3/3 Membership Policy</Box>
           <Box>
-            <Typography sx={{ textAlign: 'center', fontSize: '1rem' }}>
+            <Typography className={ classes.description }>
                 At Lomads, we offer a tiered system of roles: admins, core contributors,<br />
                 active contributors, and contributors. Each comes with unique permissions<br />
                 and access. for more details, review the roles in Settings.<br />
             </Typography>
 
-            <Typography sx={{ textAlign: 'center', fontSize: '20px', color: '#C94B32', fontWeight: 'bold', marginTop: '80px' }}>
+            <Typography className={ classes.subHeaderText }>
                 CHOOSE YOUR MEMBER ONBOARDING METHOD
             </Typography>
 
-            <Typography sx={{ textAlign: 'center', padding: '20px 0' }}>
+            <Typography align='center' py={3}>
                 Onboarding settings can be altered anytime via Settings {'>'} Membership <br />
                 Management. 
             </Typography>
 
-            <Box
-                sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
+            <Box className={ classes.switchBox }>
             <Typography
               sx={{
                 fontSize: '17px',
-                color: onboardingMethod ? '' : '#c94b32',
+                color: whitelisted ? '' : '#c94b32',
                 marginRight: '15px',
               }}
             >
               OPEN FOR ALL
             </Typography>
             <Switch2
-              onChange={() => handleOnboardingMethod(onboardingMethod)}
-              checked={onboardingMethod}
+              onChange={() => handleWhitelisted(whitelisted)}
+              checked={whitelisted}
             />
             <Typography
               sx={{
                 fontSize: '17px',
-                color: onboardingMethod ? '#c94b32' : '',
+                color: whitelisted ? '#c94b32' : '',
                 marginLeft: '15px',
               }}
             >
               WHITELISTED
             </Typography>
           </Box>
-          <Typography sx={{ textAlign: 'center', width: '100%', fontSize: '0.8rem', fontWeight: 'bold', margin: '20px 0' }}>
-                Use this link to welcome new members: [Click to copy Link] <br />
-                <Typography sx={{ fontSize: '0.7rem' }}>This invitation is also accessible from your dashboard.</Typography>
+          {
+            !whitelisted? (
+                <Typography className={ classes.orgTextLink }>
+                Use this link to welcome new members: 
+                <Typography sx={{ fontSize: '0.75rem', fontWeight: 'bold', color: '#c94b32', marginLeft: '10px' }}> 
+                    { DAO?.name } 
+                    <IconButton onClick={(e:any) => {
+                            e.stopPropagation()
+                            navigator.clipboard.writeText(`${window.location.origin}/${daoURL}`)
+                                toast.success('Copied to clipboard')
+                        }}>
+                            <img src={LINK_SVG} style={{ width: '14px' }} />
+                    </IconButton></Typography> <br />
             </Typography>
+            ) : ''
+          }
+          
+            <Typography sx={{ textAlign: 'center', fontSize: '0.7rem' }}>This invitation is also accessible from your dashboard.</Typography>
             <Typography sx={{ textAlign: 'center', fontWeight: 'bold' }}>
                 New members are automatically assigned the 'Contributors' role.
             </Typography>
@@ -244,7 +196,7 @@ export default () => {
               variant='contained'
               size='medium'
               onClick={() => {
-                navigate(`/${daoURL}/welcome`)
+                navigate(`${process.env.REACT_APP_URL}/${_get(DAO, 'url', '')}`)
             }}
             >
               GO TO DASHBOARD

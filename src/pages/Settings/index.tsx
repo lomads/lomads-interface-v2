@@ -22,8 +22,10 @@ import Organisation from './Modals/Organisation'
 import IntegrationModal from './Modals/Integration'
 import { useDAO } from 'context/dao'
 import theme from 'theme'
+import { useAppSelector } from 'helpers/useAppSelector'
 import { useLocation } from 'react-router-dom'
 import axiosHttp from 'api'
+import useMembership from 'hooks/useMembership'
 
 const useStyles = makeStyles((theme: any) => ({
   item: {
@@ -92,10 +94,11 @@ const Content = ({
 }
 
 export default () => {
+  useMembership()
   const [activeModal, setActiveModal] = useState<string | null>(null)
   const { DAO } = useDAO()
   const location = useLocation()
-
+  
   const Modal = useMemo(() => {
     if (activeModal === SafeModal.name) return SafeModal
     if (activeModal === PassTokenModal.name) return PassTokenModal
@@ -107,14 +110,12 @@ export default () => {
     if (activeModal === IntegrationModal.name) return IntegrationModal
     return Fragment
   }, [activeModal])
-
+  
   useEffect(() => {
-    if (DAO?.url && location?.state?.openDefault)
+    if (DAO?.url && location?.state?.openDefault) {
       setActiveModal(location?.state?.openDefault)
+    }
   }, [DAO?.url, location?.state?.openDefault])
-
-  console.log('activeModal : ', activeModal)
-  console.log('DAO: ', DAO)
 
   return (
     <>

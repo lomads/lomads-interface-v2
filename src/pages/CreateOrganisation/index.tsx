@@ -176,6 +176,7 @@ export default () => {
         url: state?.url?.replace(`${process.env.REACT_APP_URL}/`, ''),
         description: '',
         image: state.logo,
+        whitelisted: false,
         members: [
           {
             name: user?.name || '',

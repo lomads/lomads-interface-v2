@@ -5,7 +5,6 @@ import { Drawer, Box, Typography, Paper } from '@mui/material'
 import IconButton from 'components/IconButton'
 import Button from 'components/Button'
 import Switch from 'components/Switch'
-import Switch2 from 'components/Switch/index.v2'
 import CurrencyInput from 'components/CurrencyInput'
 import CloseSVG from 'assets/svg/close-new.svg'
 import MintSBTSvg from 'assets/svg/mintsbt.svg'
@@ -21,6 +20,7 @@ import { useNavigate } from 'react-router-dom'
 import { USDC } from 'constants/tokens'
 import { CHAIN_INFO } from 'constants/chainInfo'
 import SwitchChain from 'components/SwitchChain'
+import MembershipSection from 'components/MembershipSection'
 import { toast } from 'react-hot-toast'
 import { useWeb3Auth } from 'context/web3Auth'
 import { useDAO } from 'context/dao'
@@ -128,7 +128,6 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
       value: 0,
     },
   })
-  const [onboardingMethod, setOnboardingMethod] = useState<boolean>(false)
 
   useEffect(() => {
     if (DAO) setChainId(_get(DAO, 'sbt.chainId', _get(DAO, 'chainId')))
@@ -162,7 +161,6 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
           },
         }
       })
-      setOnboardingMethod(contract.whitelisted)
     }
   }, [contract])
 
@@ -249,10 +247,6 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
     })
   }
 
-  const handleOnboardingMethod = (value: boolean) => {
-    setOnboardingMethod(!value)
-  }
-
   return (
     <Box>
       <Box>
@@ -262,61 +256,7 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
         >
           <img src={CloseSVG} />
         </IconButton>
-        <Box
-          display='flex'
-          flexDirection='column'
-          my={6}
-          alignItems='center'
-        >
-          <img src={MintSBTSvg} />
-          <Typography
-            my={4}
-            style={{
-              color: palette.primary.main,
-              fontSize: '30px',
-              fontWeight: 400,
-            }}
-          >
-            Membership Management
-          </Typography>
-          <Typography
-            variant='subtitle2'
-            sx={{ px: 2, fontSize: 16 }}
-            textAlign='center'
-            color='rgb(118, 128, 141)'
-          >
-            {' '}
-            <span style={{ fontWeight: '700' }}>Soulbound Tokens</span> <br />
-            Select Open (no-hassle setup) or Whitelisted (added security) to
-            match your organizational processes.
-          </Typography>
-          <Box
-            sx={{ display: 'flex', alignItems: 'center', marginTop: '20px' }}
-          >
-            <Typography
-              sx={{
-                fontSize: '17px',
-                color: onboardingMethod ? '' : '#c94b32',
-                marginRight: '15px',
-              }}
-            >
-              OPEN FOR ALL
-            </Typography>
-            <Switch2
-              onChange={() => handleOnboardingMethod(onboardingMethod)}
-              checked={onboardingMethod}
-            />
-            <Typography
-              sx={{
-                fontSize: '17px',
-                color: onboardingMethod ? '#c94b32' : '',
-                marginLeft: '15px',
-              }}
-            >
-              WHITELISTED
-            </Typography>
-          </Box>
-        </Box>
+        <MembershipSection />
       </Box>
       <Box
         style={{

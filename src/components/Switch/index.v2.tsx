@@ -16,21 +16,7 @@ const CHECKMARK = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" x
 </svg>
 `
 
-const LOCK = `<svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_1635_2096)">
-<path d="M10.26 6.21997H1.62C1.00144 6.21997 0.5 6.72141 0.5 7.33997V12.91C0.5 13.5285 1.00144 14.03 1.62 14.03H10.26C10.8786 14.03 11.38 13.5285 11.38 12.91V7.33997C11.38 6.72141 10.8786 6.21997 10.26 6.21997Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M9.20992 5.94V3.77C9.20992 1.96 7.74992 0.5 5.93992 0.5C4.12992 0.5 2.66992 1.96 2.66992 3.77V6.08" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M5.93994 10.28V11.96" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M5.93995 10.2C6.48671 10.2 6.92995 9.75673 6.92995 9.20997C6.92995 8.66321 6.48671 8.21997 5.93995 8.21997C5.39319 8.21997 4.94995 8.66321 4.94995 9.20997C4.94995 9.75673 5.39319 10.2 5.93995 10.2Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<clipPath id="clip0_1635_2096">
-<rect width="11.88" height="14.53" fill="white"/>
-</clipPath>
-</defs>
-</svg>`
-
-const MaterialUISwitch = styled(Switch)(({ theme, unidirectional }) => ({
+const MaterialUISwitch = styled(Switch)(({ theme, checkedSVG }) => ({
   width: 65,
   height: 30,
   padding: 0,
@@ -45,6 +31,9 @@ const MaterialUISwitch = styled(Switch)(({ theme, unidirectional }) => ({
         backgroundColor: theme.palette.primary.main,
         boxShadow: 'none',
       },
+      '& .MuiSwitch-thumb:before': {
+        backgroundImage: `url('data:image/svg+xml;utf8,${encodeURIComponent(checkedSVG)}')`,
+      },
       '& + .MuiSwitch-track': {
         opacity: 1,
         backgroundColor: '#f0f0f0',
@@ -55,7 +44,7 @@ const MaterialUISwitch = styled(Switch)(({ theme, unidirectional }) => ({
     marginLeft: '0px !important',
   },
   '& .MuiSwitch-thumb': {
-    backgroundColor: unidirectional ? '#c94b32' : theme.palette.primary.main,
+    backgroundColor: theme.palette.primary.main,
     boxShadow: 'none',
     width: 26,
     height: 26,

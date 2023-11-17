@@ -18,7 +18,7 @@ export default (props: any) => {
     if (!token && props.private) {
       setAuthenticated(false)
     } else {
-      setAuthenticated(true)
+      setAuthenticated(true)  
     }
   }, [account, token, user, props.private])
 

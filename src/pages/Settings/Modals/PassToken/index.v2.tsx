@@ -24,6 +24,7 @@ import { USDC } from 'constants/tokens';
 import AddIcon from '@mui/icons-material/Add';
 import useBiconomyGasless from 'hooks/useBiconomyGasless';
 import SwitchChain from 'components/SwitchChain';
+import MembershipSection from 'components/MembershipSection'
 import useMintSBT from 'hooks/useMintSBT.v2';
 import { createAccountAction } from 'store/actions/session';
 import { useWeb3Auth } from 'context/web3Auth';
@@ -410,6 +411,7 @@ const PassTokenModalV2 =  ({ open, onClose }: any) => {
             <IconButton sx={{ position: 'fixed', right: 32, top: 32 }} onClick={onClose}>
                 <img src={CloseSVG} />
             </IconButton>
+            <MembershipSection />
             <Box display="flex" flexDirection="column" my={6} alignItems="center">
                 <img src={MintSBTSvg} />
                 <Typography my={4} style={{ color: palette.primary.main, fontSize: '30px', fontWeight: 400 }}>Pass Token</Typography>
