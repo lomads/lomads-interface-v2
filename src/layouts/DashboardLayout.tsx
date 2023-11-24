@@ -267,6 +267,7 @@ export default ({ children }: any) => {
     return ''
   }
 
+  console.log('DAO and dao: ', DAO.url, DAOList)
 
   return (
     <Box className={classes.root}>

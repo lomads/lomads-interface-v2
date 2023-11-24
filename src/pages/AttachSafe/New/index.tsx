@@ -612,7 +612,7 @@ export default () => {
 		axiosHttp.post(`dao/${daoURL}/attach-safe`, params)
 			.then(res => {
 				if (location?.state?.createFlow)
-					window.location.href = `/${daoURL}/welcome`
+					window.location.href = `/${daoURL}/membership/create`
 				else
 					window.location.href = `/${daoURL}/settings`
 			})
@@ -898,7 +898,7 @@ export default () => {
 				<Box className={classes.StartSafe}>
 					{!DAO ?
 						<Skeleton variant="text" sx={{ mb: 2 }} className={classes.headerText} width={400} /> :
-						<Box className={classes.headerText}>{!location?.state?.createFlow ? '' : '2/2'} Organisation's Safe Multi-sig Wallet</Box>
+						<Box className={classes.headerText}>{!location?.state?.createFlow ? '' : '2/3'} Organisation's Safe Multi-sig Wallet</Box>
 					}
 					<Box className={classes.buttonArea}>
 						<Box>

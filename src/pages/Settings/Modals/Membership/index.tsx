@@ -20,7 +20,6 @@ import { useNavigate } from 'react-router-dom'
 import { USDC } from 'constants/tokens'
 import { CHAIN_INFO } from 'constants/chainInfo'
 import SwitchChain from 'components/SwitchChain'
-import MembershipSection from 'components/MembershipSection'
 import { toast } from 'react-hot-toast'
 import { useWeb3Auth } from 'context/web3Auth'
 import { useDAO } from 'context/dao'
@@ -181,7 +180,6 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
     }
   }, [chainId])
 
-  console.log('DAO sbt:', DAO.sbt)
   useEffect(() => {
     if (DAO?.sbt) setContract(DAO?.sbt)
   }, [DAO?.sbt])
@@ -249,24 +247,48 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
 
   return (
     <Box>
-      <Box>
+      <Box sx={{ pb: 6 }}>
         <IconButton
           sx={{ position: 'fixed', right: 32, top: 32 }}
           onClick={() => onClose()}
         >
           <img src={CloseSVG} />
         </IconButton>
-        <MembershipSection />
+        <Box
+          display='flex'
+          flexDirection='column'
+          my={6}
+          alignItems='center'
+        >
+          <img src={MintSBTSvg} />
+          <Typography
+            my={4}
+            style={{
+              color: palette.primary.main,
+              fontSize: '30px',
+              fontWeight: 400,
+            }}
+          >
+            Membership Management
+          </Typography>
+          <Typography
+            variant='subtitle2'
+            sx={{ px: 2, fontSize: 16 }}
+            textAlign='center'
+            color='rgb(118, 128, 141)'
+          >
+            {' '}
+            <span style={{ fontWeight: '700' }}>Soulbound Tokens</span> <br />
+            Select Open (no-hassle setup) or Whitelisted (added security) to
+            match your organizational processes.
+          </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Typography>OPEN FOR ALL</Typography>
+            <Switch />
+            <Typography>WHITELISTED</Typography>
+          </Box>
+        </Box>
       </Box>
-      <Box
-        style={{
-          height: 4,
-          width: 200,
-          alignSelf: 'center',
-          margin: '60px auto',
-          backgroundColor: palette.primary.main,
-        }}
-      ></Box>
       <Box sx={{ pb: 6 }}>
         <IconButton
           sx={{ position: 'fixed', right: 32, top: 32 }}
@@ -615,48 +637,6 @@ export default ({ open, onClose }: { open: boolean; onClose: any }) => {
           </Box>
         )}
       </Box>
-      {contract && (
-        <Box
-          style={{
-            background:
-              'linear-gradient(0deg, rgba(255,255,255,1) 70%, rgba(255,255,255,0) 100%)',
-            width: 430,
-            position: 'fixed',
-            bottom: 0,
-            borderRadius: '0px 0px 0px 20px',
-            padding: '30px 0 20px',
-          }}
-        >
-          <Box
-            display='flex'
-            mt={4}
-            width={380}
-            style={{ margin: '0 auto' }}
-            flexDirection='row'
-          >
-            <Button
-              onClick={() => onClose()}
-              sx={{ mr: 1 }}
-              fullWidth
-              variant='outlined'
-              size='small'
-            >
-              Cancel
-            </Button>
-            <Button
-              disabled={updateContractLoading}
-              loading={updateContractLoading}
-              onClick={() => saveChanges()}
-              sx={{ ml: 1 }}
-              fullWidth
-              variant='contained'
-              size='small'
-            >
-              Save
-            </Button>
-          </Box>
-        </Box>
-      )}
     </Box>
   )
 }

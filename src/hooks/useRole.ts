@@ -74,6 +74,7 @@ const useRole = (DAO: any, account: string | undefined, safeAddress: string | un
     const { transformRole } = useTerminology(_get(DAO, 'terminologies'))
     const { loadSafe } = useSafe()
     let isSafeOwner = false;
+    console.log('useRole: ', DAO, account)
     if(DAO && account) {
         let role = _get(_find(DAO.members, m => m.member.wallet.toLowerCase() === account?.toLowerCase()), 'role', '')
         if(safeAddress){
