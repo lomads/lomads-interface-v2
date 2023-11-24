@@ -99,9 +99,6 @@ export default () => {
     setWhitelisted(!value)
     axiosHttp
         .patch(`dao/${DAO?.url}/membership/whitelisted`, {id: DAO._id, whitelisted: !value})
-        .then((result) => {
-            navigate(`/${DAO?.url}/welcome`)
-        })
   }
 
   return (
@@ -196,7 +193,7 @@ export default () => {
               variant='contained'
               size='medium'
               onClick={() => {
-                navigate(`${process.env.REACT_APP_URL}/${_get(DAO, 'url', '')}`)
+                navigate(`/${_get(DAO, 'url', '')}`)
             }}
             >
               GO TO DASHBOARD
